@@ -32,15 +32,12 @@ document.getElementById("floorsSpace").addEventListener("click", event => {
         });
         toFloor.then(res => {
             buildingArr[fromFloor].push(parseInt(res));
-            const img = document.createElement("img");
-            img.src = "assets/passenger.png";
-            document.getElementById("passengers"+fromFloor).appendChild(img);
-            console.log(buildingArr);
         });
     }
 });
 
 document.getElementById("lift").addEventListener("click", event => {
+    document.getElementById("lift").style.backgroundColor = "gray";
     const solutionLib = new SolutionLib(buildingArr, liftCapacity);
     const animate = new Animate(buildingArr, solutionLib.calculateStops());
     animate.animate();
@@ -56,5 +53,4 @@ function keyboard(showOrHide) {
         liftKeyboard.style.top = "-100vh";
         setTimeout(() => {modal.style.display = "none";}, 200);
     }
-
 }
