@@ -1,1 +1,1 @@
-You can se DEMO here -> https://zarkozivojnovic.github.io/lift_simulator/
+You can see DEMO here -> https://zarkozivojnovic.github.io/lift_simulator/
