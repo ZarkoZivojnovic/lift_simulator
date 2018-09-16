@@ -18,8 +18,8 @@ document.getElementById("floorsSpace").addEventListener("click", event => {
     if (event.target.className.includes("btn")) {
         const element = event.target.id,
             fromFloor = element.split("_")[2];
-        console.log(element.split("_")[0]);
         event.target.parentNode.style.backgroundColor = "#FF4832";
+        addPassenger(fromFloor);
         keyboard("show");
         let toFloor = new Promise((resolve) => {
             liftKeyboard.addEventListener("click", function selectFloor(ev) {
@@ -31,16 +31,24 @@ document.getElementById("floorsSpace").addEventListener("click", event => {
             })
         });
         toFloor.then(res => {
-            buildingArr[fromFloor].push(parseInt(res));
+            if (fromFloor !== res){
+                buildingArr[fromFloor].push(parseInt(res));
+            }
         });
     }
 });
 
 document.getElementById("lift").addEventListener("click", event => {
-    document.getElementById("lift").style.backgroundColor = "gray";
-    const solutionLib = new SolutionLib(buildingArr, liftCapacity);
-    const animate = new Animate(buildingArr, solutionLib.calculateStops());
-    animate.animate();
+    if (event.target.textContent === "START"){
+        const solutionLib = new SolutionLib(buildingArr, liftCapacity);
+        if (solutionLib.calculateStops().length>1){
+            document.getElementById("lift").style.backgroundColor = "gray";
+            const animate = new Animate(buildingArr, solutionLib.calculateStops());
+            animate.animate();
+        }
+    } else {
+        location.reload();
+    }
 });
 
 function keyboard(showOrHide) {
@@ -54,3 +62,10 @@ function keyboard(showOrHide) {
         setTimeout(() => {modal.style.display = "none";}, 200);
     }
 }
+
+function addPassenger(floor) {
+    const passenger = document.createElement("img");
+    passenger.src = (Math.round(Math.random()*10))%2 === 0 ? "img/passenger_1.png" : "img/passenger_2.png";
+    document.getElementById("passengers"+floor).appendChild(passenger);
+}
+
