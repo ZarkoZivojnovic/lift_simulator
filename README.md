@@ -4,7 +4,7 @@
 
 ---
 
-This is the application that calculate the shortest lift path. In the beggining you can mark floors on which people are waiting and for every passenger on which floor wants to go.
+This is the application that calculate the shortest lift path. At the beggining you can mark floors on which people are waiting and for every passenger on which floor wants to go.
 Also, there is a simple lift animation. These two things are separeted in the code.
 In lib.js file is located SolutionLib class that calculates the stops, and in animate.js is a logic for animation, also written in ES6 class.
 Class SolutionLib accepts two arguments, the first one is buildingArr and looks like this:
