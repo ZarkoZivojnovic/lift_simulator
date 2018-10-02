@@ -18,7 +18,7 @@ const buildingArr = [
     [],
     [6],
     [2]
-]
+];
 ```
 
 ---
@@ -39,7 +39,7 @@ return [
     {floor: 2, out: 0, inLift: 2, in: 1},
     {floor: 1, out: 1, inLift: 1},
     {floor: 0, out: 1, inLift: 0}
-]
+];
 ```
 
 After that, function for animation will be invoked if length of returned array is greater then 0.
